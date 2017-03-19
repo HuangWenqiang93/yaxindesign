@@ -1,0 +1,52 @@
+<html lang="zh-cn" >
+<head>
+<meta charset="utf-8" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" media="screen" />
+<title>Javascript测试</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<script type="text/javascript">
+	function init(){
+		document.getElementById("nam").innerText = dialogArguments;
+	}
+	// function setName(a){
+	// 	document.getElementById("nam").innerText = a;
+	// }
+
+	function sec(a){
+		a.border = 2;
+	}
+	function unsec(a){
+		a.border=0;
+	}
+	function ok(a){
+		returnValue=a.src;
+		
+		//opener.document.getElementById("tmg").src=a.src;
+		close(true);
+	}
+</script>
+<body onload="init()">
+	<span id="nam"></span>的头像
+	<table class="table">
+		<tr>
+			<td>
+				<script type="text/javascript">
+					for(i=1;i<21;i++){
+						document.write("<img src='./userlogo/user_logo"+i+".jpg' onmouseover='sec(this)' onmouseout='unsec(this)' onclick='ok(this)'/>");
+						if(i%5==0){
+							document.write("<br/>");
+						}
+					}
+				</script>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
