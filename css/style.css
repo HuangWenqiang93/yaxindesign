@@ -41,12 +41,12 @@ h5{
     margin-bottom: 0;
 }
 .slogan > img{
-	margin: 0 43px;
+	margin: 0 34px;
     float: left;
 }
 .slogan > img:last-child{
-	width: 200px;
-    margin-top: 20px;
+	width: 288px;
+    margin-top: 10px;
 }
 .w120{ width:1150px;margin:0  auto;}
 div,ul,li{box-sizing: border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
