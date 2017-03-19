@@ -1,486 +1,174 @@
-<html lang="zh-cn" >
+﻿<!doctype html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
-<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
-<meta HTTP-EQUIV="expires" CONTENT="0">
-<meta name="apple-touch-fullscreen" content="yes" />
-<meta name="format-detection" content="telephone=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" media="screen" />
-<title>Javascript测试</title>
-<link type="text/css" rel="stylesheet" href="style.css">
-<style type="text/css">
-	
-</style>
-<script type="text/javascript">
-	window.status="欢迎来到我的网站！";
-	function init(){
-		//alert("欢迎来到我的网站！");
-	}
-	function clowin(){
-		var cw = confirm("你确定要关闭此页？");
-		if(cw == true){
-			var userAgent = navigator.userAgent;
-				if (userAgent.indexOf("Firefox") != -1 || userAgent.indexOf("Chrome") !=-1) {
-					window.location.href="about:blank";
-				} else {
-					window.opener = null;
-					window.open("", "_self");
-					window.close();
-				}
-		}else{
-			alert("欢迎回来！");
-		}
-	}
-</script>
-</head>
-<body onload="init()" onmousemove="zuobiao()">
-<div class="clowin" onclick="clowin()">×</div>
-<!-- 九九乘法表 -->
-	<div id="jiujiu" class="disnone">
-		<script type="text/javascript">
-				for(i=1;i<=9;i++){
-					for(j=1;j<=i;j++){
-						document.write(j+"*"+i+"="+(j*i)+"&nbsp");
-					}
-					document.write("<br/>");
-				}
-		</script>
-	</div>
-<!-- 下拉框 -->
-	<select name="age" id="test1" class="disnone">
-		<script type="text/javascript">
-			for(i=18;i<100;i++){
-				document.write("<option value="+i+">"+i+"</option>");
-			}
-		</script>
-	</select>
-<!-- table -->
-	<table id="tb1" cellpadding="1" border="1" class="table">
-		<script type="text/javascript">
-			for(i=1;i<=5;i++){
-				document.write("<tr>");
-				for(j=1;j<=10;j++){
-					document.write("<td>"+(i*j)+"</td>");
-				}
-				document.write("</tr>");		
-			}
-
-		</script>
-	</table>
-<script language="javascript">  
-    function tabrows(){
-    	var changes = this.innerHTML;
-    	this.className="bg-greay";
-    	alert(this.innerHTML+"*3="+changes*3);
-    }
-        var tab=document.getElementById('tb1');
-        for(var i=0 ;i<tab.rows.length;i++)
-        {
-        	//tab.rows[i].addEventListener("click", tabrows, false);
-            for(var j=0;j<tab.rows[i].cells.length;j++)   
-            tab.rows[i].cells[j].addEventListener("click", tabrows, false);
-        }
-    
-</script>  
-
-<!-- 计算各种函数 -->
-	<input type="text" name="inp" placeholder="请输入你想输入的内容" value="" onkeyup="showfun()"/><span class="disnone">在下面查看输入结果</span><br/>
-	<input type="button" name="pint"/>
-	<input type="button" name="pfl"/>
-	<input type="button" name="eva"/>
-	<input type="button" name="isn"/>
-	<input type="button" name="PI"/>
-	<input type="button" name="RANDOM"/>
-	<input type="button" name="SIN"/>
-	<input type="button" name="POW"/>
-	<input type="button" name="SQRT"/>
-	<input type="button" name="len"/>
-	<input type="button" name="cat"/>
-	<input type="button" name="tlc"/>
-	<input type="button" name="tuc"/>
-	<input type="button" name="spl"/>
-	<input type="button" name="mai"/>
-
-	<script type="text/javascript">
-//定义一个弹出事件方法
-	var alertvalue = function () {
-        alert(this.value);
-    };
-//一开始input添加隐藏的class
-	var inputname = document.getElementsByTagName("input");
-	var span = document.getElementsByTagName("span");
-		for(i=0;i<inputname.length;i++){
-			if(inputname[i].name == "pint" || inputname[i].name == "pfl" || inputname[i].name == "eva" || inputname[i].name == "isn" || inputname[i].name == "PI" || inputname[i].name == "RANDOM" || inputname[i].name == "SIN" || inputname[i].name == "POW" || inputname[i].name == "SQRT" || inputname[i].name == "len" || inputname[i].name == "cat" || inputname[i].name == "tlc" || inputname[i].name == "tuc" || inputname[i].name == "spl" || inputname[i].name == "mai"){
-				
-			inputname[i].className="disnone";
-//给每一个input添加点击事件，弹出自己的value
-			inputname[i].addEventListener("click", alertvalue, false);
-		}
-//判断不想隐藏的input添加显示样式，并且清除点击事件
-			if(inputname[i].name == "inp"){
-				inputname[i].className="inp";
-				inputname[i].removeEventListener("click", alertvalue, false)
-			}
-		}
-//键盘弹起后执行此方法
-	function showfun(){
-		span[0].className="spanblock";
-		for(i=0;i<inputname.length;i++){
-			if(inputname[i].name == "pint" || inputname[i].name == "pfl" || inputname[i].name == "eva" || inputname[i].name == "isn" || inputname[i].name == "PI" || inputname[i].name == "RANDOM" || inputname[i].name == "SIN" || inputname[i].name == "POW" || inputname[i].name == "SQRT" || inputname[i].name == "len" || inputname[i].name == "cat" || inputname[i].name == "tlc" || inputname[i].name == "tuc" || inputname[i].name == "spl" || inputname[i].name == "mai"){
-					inputname[i].className="inp";
-				}
-//取到输入的值
-			if(inputname[i].name == "inp"){
-				var inp = inputname[i].value;
-			}
-//如果输入框里没有值则隐藏所有计算的input
-			if(inp == ""){
-				span[0].className="disnone";
-				if(inputname[i].name == "pint" || inputname[i].name == "pfl" || inputname[i].name == "eva" || inputname[i].name == "isn" || inputname[i].name == "PI" || inputname[i].name == "RANDOM" || inputname[i].name == "SIN" || inputname[i].name == "POW" || inputname[i].name == "SQRT" || inputname[i].name == "len" || inputname[i].name == "cat" || inputname[i].name == "tlc" || inputname[i].name == "tuc" || inputname[i].name == "spl" || inputname[i].name == "mai"){
-					inputname[i].className="disnone";
-				}
-				if(inputname[i].name == "inp"){
-					inputname[i].className="inp";
-				}
-			}
-//将输入的值转化为整数
-			if(inputname[i].name == "pint"){
-				inputname[i].value=("转换为整数："+parseInt(inp));
-			}
-//将输入的值转化为浮点数
-			if(inputname[i].name == "pfl"){
-				inputname[i].value=("转换为浮点数："+parseFloat(inp));
-			}
-//将输入的值乘以2
-			if(inputname[i].name == "eva"){
-				inputname[i].value=("乘以2的值："+eval(inp*2));
-			}
-//判断输入的值是否是字符类型，如果是返回TRUE，否则为FALSE
-			if(inputname[i].name == "isn"){
-				inputname[i].value=("是否是字符型："+isNaN(inp));
-			}
-//输出π的值
-			if(inputname[i].name == "PI"){
-				inputname[i].value=("π的值："+Math.PI);
-			}
-//输出1-10的随机数
-			if(inputname[i].name == "RANDOM"){
-				inputname[i].value=("1-10的随机数"+parseInt(Math.random()*10+1));
-			}
-//将π除以输入的值
-			if(inputname[i].name == "SIN"){
-				inputname[i].value=("正弦值：π/"+inp+"="+Math.sin(Math.PI/inp));
-			}
-//将输入的值计算它的二次方
-			if(inputname[i].name == "POW"){
-				inputname[i].value=("计算它的2次方："+Math.pow(inp,2));
-			}
-//计算输入的值的算术平方根
-			if(inputname[i].name == "SQRT"){
-				inputname[i].value=("它的算术平方根："+Math.sqrt(inp));
-			}
-//计算输入的值的长度
-			if(inputname[i].name == "len"){
-				inputname[i].value=("length长度等于："+inp.length);
-			}
-//输出输入值的第二个字符或数字
-			if(inputname[i].name == "cat"){
-				inputname[i].value=("它的第二个字符或数字是："+inp.charAt(1));
-			}
-//将输入的值转化为小写仅限字母
-			if(inputname[i].name == "tlc"){
-				inputname[i].value=("将字符串所有字母转换成小写："+inp.toLowerCase());
-			}
-//将输入的值转化为大写仅限字母
-			if(inputname[i].name == "tuc"){
-				inputname[i].value=("将字符串所有字母转换成大写："+inp.toUpperCase());
-			}
-//将输入的值以‘，’分割成数字
-			if(inputname[i].name == "spl"){
-				var k = inp.split("，");
-				inputname[i].value=("以，为分隔符转换成数组：["+k[0]+"],["+k[1]+"],["+k[2]+"]");
-			}
-//判断输入的内容是否有且只有一个@字符
-			if(inputname[i].name == "mai"){
-				var count =0;
-				for(x=0;x<inp.length;x++){
-					var y = inp.charAt(x);
-					if(y == "@"){
-						count++;
-					}
-					if(count == 0){
-						y = "没有@字符";
-					}else if(count == 1){
-						y = "有一个@字符";
-					}else{
-						y="有多个@字符";
-					}
-				}
-				inputname[i].value=("是否有且只有一个@："+y);
-			}
-
-		} 
-	}
+<meta charset="utf-8">
+<title>亚新，企业产品设计伙伴！</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/logo.png" media="screen" />
+<link   rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/jquery.js"></script>
+<script src="js/js.js"></script>
+<script src="js/index.js"></script>
+	<!--[if lte IE 9]>
+	<script src="js/PIE.js"></script>
+	<![endif]-->
+	<!--[if IE 7]>
+	<script charset="utf-8">
+		$(function () {
+			$("a").attr("hidefocus", true);
+		});
 	</script>
-<!-- 加减乘除计算器 -->
-<form name="frm" class="form1">
-	<div class="frmtit">简易计算器</div>
-	<input type="text" name="n3" class="inp3" min="0">
-	<div class="keybox">
-		<input type="text" name="n1" class="inp2" min="0" max="10"/>
-		<select class="inp2" name="op">
-			<option value="1">＋</option>
-			<option value="2">－</option>
-			<option value="3">×</option>
-			<option value="4">÷</option>
-		</select>
-		<input type="text" name="n2" class="inp2" min="0" max="10"/>
-		<input type="button" name="" value="=" class="inp2" onclick="fun()" />
-	</div>
-</form>
-<script type="text/javascript">
-	function fun(){
-		var a = parseFloat(document.frm.n1.value);
-		var b = parseInt(document.frm.op.value);
-		var c = parseFloat(document.frm.n2.value);
-		var d = 0;
+	<![endif]-->
+</head>
 
-		switch (b) {
-		 	case 1:
-		 		d = a+c;
-		 		break;
-		 	case 2:
-		 		d = a-c;
-		 		break;
-		 	case 3:
-		 		d = a*c;
-		 		break;
-		 	case 4:
-		 		d = a/c;
-		 		break;
-		 	default:
-		 		d = "输入有误！";
-		 		break;
-		 } 
-		 document.frm.n3.value=d;
-	}
-	
-</script>
-<!-- onsubmit 测试 -->
-<form name="os" onsubmit="submitos()" class="form1">
-<div class="frmtit">欢迎登录</div>
-	用户名：<input type="text" name="name" class="inp"/><br/>
-	一密码：<input type="password" name="pwd" class="inp"/><br/>
-	二密码：<input type="password" name="pwd2" class="inp"/><br/>
-	<input type="submit" name="" value="登录" class="btn"/>
-</form>
-<script type="text/javascript">
-	function submitos(){
-		var s1 = document.os.name.value;
-		var s2 = document.os.pwd.value;
-		var s3 = document.os.pwd2.value;
-		if(s1=="" || s2=="" || s3==""){
-			alert("请输入用户名或密码！");
-			return false;
-		}
-		if(s2!=s3){
-				alert("两次输入密码不一致！");
-			return false;
-		}
-		return true;
-	}
-</script>
-<!-- setTimeout函数 每隔5秒打开一个新页面 -->
-<script type="text/javascript">
-	function openwin(){
-		open();
-		//setTimeout(openwin,5000);
-	}
-	//setTimeout(openwin, 5000)
-</script>
-<!-- setInterval 函数 每隔一定时间执行一次 -->
-<input id="add" type="button" name="add1" class="inp nowtime" value="" />
-<script type="text/javascript">
-	function showtime(){
-		var add = document.getElementById("add");
-		var tim = new Date();
-		var year = tim.getFullYear();
-		var mon = tim.getMonth()+1;
-		var day = tim.getDate();
-		var xq = tim.getDay();
-		var hou = tim.getHours();
-		var min = tim.getMinutes();
-		var sec = tim.getSeconds();
-		switch (xq) {
-			case 0:xq = "日";break;
-			case 1:xq = "一";break;
-			case 2:xq = "二";break;
-			case 3:xq = "三";break;
-			case 4:xq = "四";break;
-			case 5:xq = "五";break;
-			case 6:xq = "六";break;
-		}
-		add.value=year+"年"+mon+"月"+day+"日,星期"+xq+" "+hou+"时"+min+"分"+sec+"秒";
-	}
-	function add1(){
-		showtime();
-	}
-	setInterval(add1, 1000);
-</script>
-<!-- 设置背景颜色 -->
-
-
-<div class="nav" id="nav">菜单</div>
-<div class="disnone" id="navbox">
-	<ul class="bgul">
-		<li onclick="setbg('#f73c51')">少女红</li>
-		<li onclick="setbg('#ede0bd')">活力棕</li>
-		<li onclick="setbg('#dfd3ab')">淡雅绿</li>
-		<li onclick="setbg('#9ed99f')">清新绿</li>
-	</ul>
+<body>
+<header>
+<div class="head_bor">
+    <div class="w120">
+        <h1 class="l"><a href="javascript:;"><img src="images/logo.png"></a></h1>
+        <div class="slogan">
+        	<img src="images/4.png">
+        	<img src="images/3.png">
+        	<img src="images/2.png">
+        	<img src="images/1.png">
+        	<img src="images/so.png">
+        </div>  
+         <ul class="head_nav l">
+         <li><a href="javascript:;">首页</a></li>
+         <li><a href="javascript:;">案例</a></li>
+         <li><a href="javascript:;">服务</a></li>
+         <li><a href="javascript:;">我们</a></li>
+         </ul>
+    </div>
 </div>
-<script type="text/javascript">
-	var nav = document.getElementById("nav");
-	var navbox = document.getElementById("navbox");
-	nav.onclick = function(){
-		navbox.className = "navbox";
-		navbox.className+=" "+"slideLeft";
-	}
-	navbox.onclick = function(){
-		navbox.className+=" "+"rightout";
-		//navbox.className = "disnone";
-	}
-	function setbg(a){
-		document.body.style.backgroundColor=a;
-	}
+<nav></nav><!--导航结束--></header>
 
-</script>
-<!-- 获取鼠标位置 -->
-<input type="button" id="sp" class="inp" value="" onkeyup="showfun()"/>
-<script type="text/javascript">
-	function zuobiao(){
-		var x = event.x;
-		var y = event.y;
-		document.getElementById("sp").value="X:"+x+"  Y:"+y;
-	}
-</script>
-<!-- 选择城市 -->
-<input type="button" id="chose" class="inp" value="选择城市" /><br/>
-<div id="city" class="cityclass">
-<div class="citybox">
-	<span id="closecity">关闭</span>
-	<table id="tab2" class="table">
-		<tr>
-			<td>北京</td>
-			<td>上海</td>
-			<td>广州</td>
-			<td>深圳</td>
-		</tr>
-		<tr>
-			<td>武汉</td>
-			<td>成都</td>
-			<td>南京</td>
-			<td>珠海</td>
-		</tr>
-	</table>
+<div class="banner width">
+   <div  class="bann_1"></div>
+   <div  class="bann_2"></div>
+   <div  class="bann_3"></div>
+  <ol>
+	  <li class="active3"></li>
+	  <li></li>
+	  <li></li>
+  </ol>
+</div><!--轮播图结束-->
+
+<div class="list w120 ">
+	<h2>亚新设计服务</h2>
+		<ul  class="product clear">
+		</ul>
 </div>
+
+<div class="list list_bg padnone">
+    <ul class="scheme w120 clear">
+        <li>
+	        <span class="bgcolor_yellow">
+		        <h5>智能车载产品</h5>
+		        <p>Intelligent wireless router</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_1.png">
+	        </a>
+        </li>
+        <li class="margin57">
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_2.png">
+	        </a>
+	        <span class="bgcolor_red">
+		        <h5>智能手持设备</h5>
+		        <p>Intelligent handheld products</p>
+	        </span>
+        </li>
+        <li>
+	        <span class="bgcolor_blue">
+		        <h5>智能手机</h5>
+		        <p>smart phone</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_3.png">
+	        </a>
+        </li>
+    </ul>
 </div>
-<script type="text/javascript">
-	var show = document.getElementById("chose");
-	var close = document.getElementById("closecity");
-	var city = document.getElementById("city");
-	var tab2 = document.getElementById("tab2");
-	function showcity(){
-		city.style.display="block";
-		city.className+=" "+"upinto";
-	}
-	function closecity(){
-		city.style.display="none";
-	}
-	function setcity(){
-		show.value = this.innerText;
-		city.style.display="none";
-	}
-    for(i=0;i<tab2.rows.length;i++){
-    	for(j=0;j<tab2.rows[i].cells.length;j++){
-    		tab2.rows[i].cells[j].addEventListener("click", setcity, false);
-    	}
-    }
-	show.addEventListener("click", showcity, false);
-	close.addEventListener("click", closecity, false);
-	//city.addEventListener("click", closecity, false);
-</script>
-<!-- 全选 全不选 反选 -->
-<input class="chk_1" id="checkbox_a1" type="checkbox" name="sport" value="游泳"/><label for="checkbox_a1">游泳</label>
-<input class="chk_1" id="checkbox_a2" type="checkbox" name="sport" value="爬山"/><label for="checkbox_a2">爬山</label>
-<input class="chk_1" id="checkbox_a3" type="checkbox" name="sport" value="篮球"/><label for="checkbox_a3">篮球</label>
-<input class="chk_1" id="checkbox_a4" type="checkbox" name="sport" value="发呆"/><label for="checkbox_a4">发呆</label><br/>
-<input type="button" class="inp" value="全选" onclick="secall(true)"/>
-<input type="button" class="inp" value="全不选" onclick="secall(false)"/>
-<input type="button" class="inp" value="反选" onclick="fina()" />
-<input type="button" class="inp" value="确定" onclick="ok()" />
-<script type="text/javascript">
-	var as = document.getElementsByName("sport");
-	function secall(a){
-		for(i=0;i<as.length;i++)as[i].checked=a;
-	}
-	function fina(){
-		for(i=0;i<as.length;i++)as[i].checked=!as[i].checked;
-	}
-	function ok(){
-		var txt = "你选择的是：";
-		for(i=0;i<as.length;i++){
-			if(as[i].checked)txt+=as[i].value+" ";
-		}
-		alert(txt);
-	}
-</script>
-	
-<script type="text/javascript">
-	function showImg(){
-		
 
-		// if(navigator.userAgent.indexOf("Chrome") >0 ){
-			
-		 	// var winOption = "height="+310+",width="+310+",top=50,left=50,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,fullscreen=0";
-			 //    	w = open("dialogimg.html","", winOption);
-			 //    	var name = document.frm2.uname.value;
-			 //    	w.setName(name);
-		// 	}
-		// else{
-			var name = document.frm2.uname.value;
-		    // var res = showModalDialog("dialogimg.html", name, 'dialogHeight: ' + 310 + 'px; dialogWidth: ' + 310 + 'px;edge: Raised; center: Yes; help: Yes;scroll:no; resizable: no; status: no;resizable:yes');
-		// } 
+<div class="list w120 p_bg padnone"></div>
 
-		var res = showModalDialog("dialogimg.html", name,"dialogWidth:250px;dialogHeight:250px;");
-		if(res==null){
-			document.getElementById("tmg").src="./userlogo/user_logo1.jpg";
-		}else {
-			document.getElementById("tmg").src=res;
-		}
-	}
-</script>
-<form name="frm2">
-	<table class="table">
-		<tr>
-			<th colspan="2">用户注册</th>
-		</tr>
-		<tr>
-			<td>用户名</td>
-			<td>
-				<input type="text" name="uname" style="width: 100px;" />
-			</td>
-		</tr>
-		<tr>
-			<td>头像</td>
-			<td>
-				<img id="tmg" src="./userlogo/user_logo1.jpg"/>
-				<a href="javascript:showImg();">换一张</a>
-			</td>
-		</tr>
-	</table>
-	</form>
+<div class="list list_bg padnone">
+    <ul class="scheme w120 clear">
+        <li>
+	        <span class="bgcolor_yellow">
+		        <h5>智能无线路由器</h5>
+		        <p>Intelligent wireless router</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_4.png">
+	        </a>
+        </li>
+        <li class="margin57">
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_5.png">
+	        </a>
+	        <span class="bgcolor_red">
+		        <h5>智能摄像头</h5>
+		        <p>smart camear</p>
+	        </span>
+        </li>
+        <li>
+	        <span class="bgcolor_blue">
+		        <h5>智能家电</h5>
+		        <p>Intelligent home appliance</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_6.png">
+	        </a>
+        </li>
+    </ul>
+</div>
+
+<div class="list w120 p_bg2 padnone"></div>
+
+<div class="list list_bg padnone">
+    <ul class="scheme w120 clear">
+        <li>
+	        <span class="bgcolor_yellow">
+		        <h5>智能健康</h5>
+		        <p>Intelligent health</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_7.png">
+	        </a>
+        </li>
+        <li class="margin57">
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_8.png">
+	        </a>
+	        <span class="bgcolor_red">
+		        <h5>智能医疗</h5>
+		        <p>Intelligent medical</p>
+	        </span>
+        </li>
+        <li>
+	        <span class="bgcolor_blue">
+		        <h5>智能医疗</h5>
+		        <p>Intelligent medica</p>
+	        </span>
+	        <a href="javascript;"  class="bg_tranis">
+	        	<img src="images/p_9.png">
+	        </a>
+        </li>
+    </ul>
+</div>
+
+<div class="list w120 partner_bg padnone"></div>
+
+<div  class="video clear"></div>
+
+<footer class="width">
+ <div class="copyright width">
+<p>北京（总部）ADD:北京市朝阳区光华路9号光华路3Q大厦 TEL: 010-53274601 182 0146 5069 EMAIL: yaxindesign@163.com</p>
+<p>亚新工业设计 2006-2016版权所有 © </p>
+ </div>
+</footer><!--售后服务-->
+
 </body>
 </html>
