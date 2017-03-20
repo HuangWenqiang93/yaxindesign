@@ -112,7 +112,7 @@ $(function(){
 		  v_h=$('.video').height();
 		   if(v_offset_t>=v_t-10 && v_h==0)
 		   {
-			 $('.video').animate({height:200},1000,'linear',function(){
+			 $('.video').animate({height:217},1000,'linear',function(){
 				  $('.video a').removeClass('video_h');
 				 });
 			 $('.video .video_text').delay(400).animate({top:0});
