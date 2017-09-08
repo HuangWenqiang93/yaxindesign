@@ -13,7 +13,18 @@ li {
 	list-style: none;
 }
 body {
-	font-size: 14px;font-family: "微软雅黑";
+	    font-size: 14px;
+        font-family: "微软雅黑";
+        color: #fff;
+}
+.updatebg{
+        width: 100%;
+        height: 100%;
+        background: url(../images/update.png) center center no-repeat;
+        background-size: 70%;
+        position: absolute;
+        /* border: 2px solid red; */
+        box-shadow: inset 0px 0px 200px 20px #ddd;
 }
 /*.clear {
 	clear: both;
